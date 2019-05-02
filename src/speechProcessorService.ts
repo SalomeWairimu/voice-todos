@@ -7,6 +7,7 @@ export default class SpeechProcessorService {
   toggleTodoHandler: (todo: Todo) => Todo[];
   state: States;
   speaker: SpeechSynthesisUtterance;
+  // var speech_answer =  '';
 
   constructor(public todos: Todo[]) {
     this.state = States.LISTENING;
@@ -22,10 +23,36 @@ export default class SpeechProcessorService {
     }
   }
 
+  getAnswer(transcript: string) {
+    console.log('Calling endpoint');
+    fetch('http://hinckley.cs.northwestern.edu/~rbi054/whisper/update_answer.php', {
+      method: 'POST',
+      headers: new Headers({
+                'Content-Type': 'application/x-www-form-urlencoded', // <-- Specifying the Content-Type
+        }),
+      body: `param1=${transcript}` // <-- Post parameters
+    })
+        .then(function (response) {
+                        return response.text();
+                    }).then(function(data) {
+                        console.log(data);
+                        var speechAnswer=data;
+                        console.log('answer is');
+                        console.log(speechAnswer);
+                    }).catch(function (error) {
+                        console.log('Request failed', error);
+                        var speechAnswer='';
+                        console.log(speechAnswer);
+                    });
+
+  }
   processListening(transcript: string) {
+    this.getAnswer(transcript);
+
+    console.log(transcript);
     if (transcript.includes('where am I')) {
       // this.state = States.ADDING;
-      this.speaker.text = 'You are at the Block Museum in Evanston Illinois';
+      this.speaker.text = 'This is the Block Museum';
       speechSynthesis.speak(this.speaker);
     } else if (transcript.includes('what exhibit is this')) {
       this.speaker.text = 'Welcome to this exhibit titled Caravans of Gold, Fragments in Time';

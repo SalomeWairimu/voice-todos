@@ -3,6 +3,8 @@ import './App.css';
 import TodoList from './TodoList';
 import SpeechRecognitionService from './speechRecognitionService';
 import SpeechProcessorService from './speechProcessorService';
+// const baseUrl = "../src/";
+import logo from './location.svg';
 import './App.css';
 
 interface State {
@@ -83,10 +85,9 @@ class App extends React.Component<{} | undefined, State> {
   render() {
     return (
       <div>
-        <header className="App-header">
-        Voice todos
-        </header>
-        <div className="App">
+        <div className="App App-header">
+        Whisper Space
+        <img src={logo} className="App-logo" alt="logo" /> 
           <button onClick={this.toggleRecording}>{this.state.recording ? 'Stop' : 'Start'} recording</button>
           {this.state.result && <p>Transcript: {this.state.result}</p>}
           <form onSubmit={event => { this.addTodo(this.input!.value); event.preventDefault(); }}>
@@ -94,7 +95,6 @@ class App extends React.Component<{} | undefined, State> {
             <button type="submit">Add</button>
           </form>
           <TodoList todos={this.state.todos} onToggle={this.toggle} />
-          <img src={logo} className="App-logo" alt="logo" /> 
         </div>
       </div>
     );
