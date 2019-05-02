@@ -52,7 +52,7 @@ export default class SpeechProcessorService {
     console.log(transcript);
     if (transcript.includes('where am I')) {
       // this.state = States.ADDING;
-      this.speaker.text = 'This is the Block Museum';
+      this.speaker.text = 'You are at the Block Museum in Evanston Illinois';
       speechSynthesis.speak(this.speaker);
     } else if (transcript.includes('what exhibit is this')) {
       this.speaker.text = 'Welcome to this exhibit titled Caravans of Gold, Fragments in Time';
