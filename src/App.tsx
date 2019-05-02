@@ -3,6 +3,7 @@ import './App.css';
 import TodoList from './TodoList';
 import SpeechRecognitionService from './speechRecognitionService';
 import SpeechProcessorService from './speechProcessorService';
+import './App.css';
 
 interface State {
   recording: boolean;
@@ -93,6 +94,7 @@ class App extends React.Component<{} | undefined, State> {
             <button type="submit">Add</button>
           </form>
           <TodoList todos={this.state.todos} onToggle={this.toggle} />
+          <img src={logo} className="App-logo" alt="logo" /> 
         </div>
       </div>
     );
