@@ -24,6 +24,7 @@ export default class SpeechProcessorService {
   }
 
   getAnswer(transcript: string) {
+    var that = this;
     console.log('Calling endpoint');
     fetch('http://hinckley.cs.northwestern.edu/~rbi054/whisper/update_answer.php', {
       method: 'POST',
@@ -39,6 +40,8 @@ export default class SpeechProcessorService {
                         var speechAnswer=data;
                         console.log('answer is');
                         console.log(speechAnswer);
+                        that.speaker.text = speechAnswer;
+                        speechSynthesis.speak(that.speaker);
                     }).catch(function (error) {
                         console.log('Request failed', error);
                         var speechAnswer='';
