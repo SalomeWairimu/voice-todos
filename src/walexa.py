@@ -13,7 +13,7 @@ def similar(a,b):
 question_database={}
 
 
-data=open("data.csv","r")
+data=open("../public/data.csv","r")
 lines=data.readlines()
 for line in lines:
 	q_and_a=line.split(",")

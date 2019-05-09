@@ -52,25 +52,25 @@ export default class SpeechProcessorService {
   processListening(transcript: string) {
     this.getAnswer(transcript);
 
-    console.log(transcript);
-    if (transcript.includes('where am I')) {
-      // this.state = States.ADDING;
-      this.speaker.text = 'You are at the Block Museum in Evanston Illinois';
-      speechSynthesis.speak(this.speaker);
-    } else if (transcript.includes('what exhibit is this')) {
-      this.speaker.text = 'Welcome to this exhibit titled Caravans of Gold, Fragments in Time';
-      speechSynthesis.speak(this.speaker);
-    } else if (transcript.includes('what is your favorite exhibit')) {
-      this.speaker.text = 'My favorite is the Atlas of Maritime Charts by Abraham Cresque.';
-      speechSynthesis.speak(this.speaker);
-    } else if (transcript.includes('what works are on display')) {
-      this.speaker.text = 'Jen Bervin, Dario Robleto, Kader Attia, Marie Watt, Walter Kitundu';
-      speechSynthesis.speak(this.speaker);
-    } else if ((transcript.includes('complete') || transcript.includes('toggle')) && transcript.includes('task')) {
-      this.processToggling(transcript);
-    } else {
-      this.state = States.LISTENING;
-    }
+    // console.log(transcript);
+    // if (transcript.includes('where am I')) {
+    //   // this.state = States.ADDING;
+    //   this.speaker.text = 'You are at the Block Museum in Evanston Illinois';
+    //   speechSynthesis.speak(this.speaker);
+    // } else if (transcript.includes('what exhibit is this')) {
+    //   this.speaker.text = 'Welcome to this exhibit titled Caravans of Gold, Fragments in Time';
+    //   speechSynthesis.speak(this.speaker);
+    // } else if (transcript.includes('what is your favorite exhibit')) {
+    //   this.speaker.text = 'My favorite is the Atlas of Maritime Charts by Abraham Cresque.';
+    //   speechSynthesis.speak(this.speaker);
+    // } else if (transcript.includes('what works are on display')) {
+    //   this.speaker.text = 'Jen Bervin, Dario Robleto, Kader Attia, Marie Watt, Walter Kitundu';
+    //   speechSynthesis.speak(this.speaker);
+    // } else if ((transcript.includes('complete') || transcript.includes('toggle')) && transcript.includes('task')) {
+    //   this.processToggling(transcript);
+    // } else {
+    //   this.state = States.LISTENING;
+    // }
   }
 
   processAdding(transcript: string) {
