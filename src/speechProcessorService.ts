@@ -22,7 +22,6 @@ export default class SpeechProcessorService {
       this.processAdding(transcript);
     }
   }
-
   getAnswer(transcript: string) {
     var that = this;
     console.log('Calling endpoint');
