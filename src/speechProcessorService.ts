@@ -13,8 +13,22 @@ export default class SpeechProcessorService {
     this.state = States.LISTENING;
     this.speaker = new SpeechSynthesisUtterance();
     this.speaker.lang = 'en-US';
+    setInterval(this.getLocal, 10000);
   }
 
+  getLocal() {
+    fetch('http://hinckley.cs.northwestern.edu/~rbi054/whisper/get_location.php', {
+      method: 'GET'
+    })
+        .then(function (response) {
+                        return response.text();
+                    }).then(function(data) {
+                        console.log(data);
+                    }).catch(function (error) {
+                        console.log('Request failed', error);
+                    });
+  }
+  
   process(transcript: string) {
     if (this.state === States.LISTENING) {
       this.processListening(transcript);
